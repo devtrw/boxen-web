@@ -93,6 +93,11 @@ echo "
 sudo -p "    Password for sudo again: "  true
 
 cd /opt/boxen/repo
+
+# Fixes issue with invalid clang argument in json gem
+# see: https://github.com/boxen/boxen/issues/119
+export ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future
+
 export BOXEN_REPO_NAME=<%= view.repo_name %>
 script/boxen --token <%= view.access_token %> --login <%= view.login %>
 
