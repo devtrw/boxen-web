@@ -99,7 +99,9 @@ cd /opt/boxen/repo
 export ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future
 
 export BOXEN_REPO_NAME=<%= view.repo_name %>
-script/boxen --token <%= view.access_token %> --login <%= view.login %>
+
+# We don't currently need to enforce disk encryptions so --no-fde is added
+script/boxen --token <%= view.access_token %> --login <%= view.login %> --no-fde
 
 cd $HOME
 
